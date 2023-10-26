@@ -1,8 +1,6 @@
 # tests/test_fuzzy.py
-from fuzzy import Temp, Pressure, Speed
-import pytest
 
-pytestmark = pytest.mark.disable_output_capturing
+from fuzzy import Temp, Pressure, Speed
 
 # Test Temp class
 def test_freeze():
@@ -38,3 +36,14 @@ def test_hot():
 # Test Pressure class
 def test_very_low():
     pressure = Pressure()
+    assert pressure.very_low(0.1) == 1
+    assert pressure.very_low(0.3) == 0
+    assert pressure.very_low(0.15) == 1
+
+def test_low():
+    pressure = Pressure()
+    assert pressure.low(0.3) == 0
+    assert pressure.low(0.5) == 0.5
+    assert pressure.low(0.7) == 0.5
+    assert pressure.low(0.6) == 0
+    assert pressure.low(0.8) == 0
