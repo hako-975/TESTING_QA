@@ -11,32 +11,30 @@ def test_freeze():
     assert temp.freeze(40) == 0
     assert temp.freeze(20) == 1
 
-# ... (other test functions for Temp)
+def test_cold():
+    temp = Temp()
+    assert temp.cold(30) == 0
+    assert temp.cold(50) == 0.5
+    assert temp.cold(70) == 0.5
+    assert temp.cold(80) == 0
+    assert temp.cold(90) == 0
 
-# Test Speed class
-def test_calculate_speed():
-    speed = Speed()
-    assert speed.calculate_speed("FREEZE", "VERY LOW") == [80, 100, 100]
-    assert speed.calculate_speed("COLD", "HIGH") == [80, 100, 100]
-    # Add more test cases for different combinations of temperature and pressure.
+def test_warm():
+    temp = Temp()
+    assert temp.warm(60) == 1
+    assert temp.warm(70) == 0.5
+    assert temp.warm(50) == 0.5
+    assert temp.warm(80) == 0
+    assert temp.warm(90) == 0
 
-# Mock user input for tests
-@pytest.mark.parametrize("temperature, pressure, expected_speed", [
-    ("FREEZE", "VERY LOW", [80, 100, 100]),
-    ("COLD", "HIGH", [80, 100, 100]),
-    # Add more test cases here
-])
-def test_speed_calculation_with_input(monkeypatch, temperature, pressure, expected_speed):
-    # Mock user input
-    monkeypatch.setattr('builtins.input', lambda _: f"{temperature}\n{pressure}\n")
-    
-    # Now you can run your script
-    speed = Speed()
-    speed_values = speed.calculate_speed(temperature, pressure)
-    
-    # Assertions
-    assert speed_values == expected_speed
+def test_hot():
+    temp = Temp()
+    assert temp.hot(80) == 1
+    assert temp.hot(90) == 0.5
+    assert temp.hot(70) == 0.5
+    assert temp.hot(100) == 1
+    assert temp.hot(110) == 0
 
-# You can also add test functions for the graphing functionality if you want to test the plotting.
-
-# Remember to adjust the test cases and method calls according to your specific requirements.
+# Test Pressure class
+def test_very_low():
+    pressure = Pressure()
