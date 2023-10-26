@@ -1,6 +1,9 @@
 # tests/test_fuzzy.py
 
 from fuzzy import Temp, Pressure, Speed
+import pytest
+
+pytestmark = pytest.mark.disable_output_capturing
 
 # Test Temp class
 def test_freeze():
