@@ -1,5 +1,4 @@
 # tests/test_fuzzy.py
-
 from fuzzy import Temp, Pressure, Speed
 import pytest
 
@@ -51,9 +50,7 @@ def test_low():
     assert pressure.low(0.6) == 0
     assert pressure.low(0.8) == 0
 
-# Add more test functions for Pressure class and other methods/classes as needed.
-
-# Test Speed class (if desired)
+# Test Speed class
 def test_calculate_speed():
     speed = Speed()
     assert speed.calculate_speed("FREEZE", "VERY LOW") == [80, 100, 100]
@@ -63,4 +60,3 @@ def test_calculate_speed():
 # You can also add test functions for the graphing functionality if you want to test the plotting.
 
 # Remember to adjust the test cases and method calls according to your specific requirements.
-
