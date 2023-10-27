@@ -1,2 +1,2 @@
-# testing_qa
+# TESTING QA
 Mata Kuliah TESTING DAN QA PERANGKAT LUNAK 
